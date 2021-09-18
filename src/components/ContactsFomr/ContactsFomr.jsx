@@ -1,10 +1,25 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import contactsActions from '../../redux/phonebook/contacts-actions';
+import { getContacts } from '../../redux/phonebook/contacts-selectors';
+import toastr from 'toastr';
+import toastrOptions from '../../components/Notification';
 import useInput from '../../Hooks/useInput';
 import '../ContactsFomr/ContactsFomr.scss';
 
-const ContactsFomr = ({ onSubmitContacts, onClose }) => {
+const ContactsFomr = ({ onClose }) => {
   const inputName = useInput('');
   const inputNumber = useInput('');
+
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
+  const checkNameValidatiton = (newName) => {
+    return contacts.find(
+      ({ name }) => name.toLowerCase() === newName.toLowerCase()
+    );
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -12,8 +27,12 @@ const ContactsFomr = ({ onSubmitContacts, onClose }) => {
     const name = inputName.value;
     const number = inputNumber.value;
 
-    onSubmitContacts({ name, number });
-
+    if (checkNameValidatiton(name)) {
+      toastr.error(`${name} is already in contacts`);
+      toastrOptions();
+      return;
+    }
+    dispatch(contactsActions.addContact(name, number));
     onClose();
   };
 
@@ -56,8 +75,7 @@ const ContactsFomr = ({ onSubmitContacts, onClose }) => {
 };
 
 ContactsFomr.propTypes = {
-  onSubmitContacts: PropTypes.func.isRequired,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ContactsFomr;
