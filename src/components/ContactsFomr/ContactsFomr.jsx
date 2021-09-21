@@ -73,7 +73,7 @@ const ContactsFomr = ({ onClose }) => {
           autoComplete="off"
           type="tel"
           name="number"
-          placeholder="+3(073) 777 77 77"
+          placeholder="+38(073) 777 77 77"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="The phone number must be digits and can contain spaces, dashes, parentheses and can start with + "
           required
