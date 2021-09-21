@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getVisibleContacts } from '../../redux/phonebook/contacts-selectors';
+import {
+  getVisibleContacts,
+  getTotalContactsCount,
+} from '../../redux/phonebook/contacts-selectors';
 import contactsActions from '../../redux/phonebook/contacts-actions';
 import Title from '../../components/Title';
 import Filter from '../../components/Filter';
@@ -14,12 +17,13 @@ import '../ContactsList/ContactsList.scss';
 const ContactsList = () => {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
+  const totalContacts = useSelector(getTotalContactsCount);
 
   const onDeleteContact = (id) => dispatch(contactsActions.deleteContacts(id));
 
   return (
     <>
-      {contacts.length <= 0 ? (
+      {totalContacts <= 0 ? (
         <NotificatiomMessage message={'no contacts yet ...'} />
       ) : (
         <>

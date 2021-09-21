@@ -15,23 +15,37 @@ const ContactsFomr = ({ onClose }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const checkNameValidatiton = (newName) => {
-    return contacts.find(
-      ({ name }) => name.toLowerCase() === newName.toLowerCase()
-    );
+  const checkValidatitonOfNewContact = (value) => {
+    if (typeof value === 'string') {
+      return contacts.find(
+        ({ name }) => name.toLowerCase() === value.toLowerCase()
+      );
+    } else {
+      return contacts.find(({ number }) => number === value);
+    }
+  };
+
+  const toastrMessage = (message) => {
+    toastr.error(`Contact ${message} is already in contacts`);
+    toastrOptions();
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
 
     const name = inputName.value;
-    const number = inputNumber.value;
+    const number = Number(inputNumber.value);
 
-    if (checkNameValidatiton(name)) {
-      toastr.error(`${name} is already in contacts`);
-      toastrOptions();
+    if (checkValidatitonOfNewContact(name)) {
+      toastrMessage(name);
       return;
     }
+
+    if (checkValidatitonOfNewContact(number)) {
+      toastrMessage(number);
+      return;
+    }
+
     dispatch(contactsActions.addContact(name, number));
     onClose();
   };
@@ -61,7 +75,7 @@ const ContactsFomr = ({ onClose }) => {
           autoComplete="off"
           type="tel"
           name="number"
-          placeholder="+38067-777-77-77"
+          placeholder="+380677777777"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="The phone number must be digits and can contain spaces, dashes, parentheses and can start with + "
           required

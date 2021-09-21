@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getContacts } from '../../redux/phonebook/contacts-selectors';
+import { getTotalContactsCount } from '../../redux/phonebook/contacts-selectors';
 
 const Сounter = ({ title }) => {
-  const totalContactsCount = useSelector(getContacts);
+  const totalContactsCount = useSelector(getTotalContactsCount);
 
   return (
     <div style={{ fontSize: '2rem' }}>
-      {title} {totalContactsCount.length}
+      {title} {totalContactsCount}
     </div>
   );
 };
