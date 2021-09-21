@@ -16,13 +16,11 @@ const ContactsFomr = ({ onClose }) => {
   const contacts = useSelector(getContacts);
 
   const checkValidatitonOfNewContact = (value) => {
-    if (typeof value === 'string') {
-      return contacts.find(
-        ({ name }) => name.toLowerCase() === value.toLowerCase()
-      );
-    } else {
-      return contacts.find(({ number }) => number === value);
-    }
+    return contacts.find(
+      ({ name, number }) =>
+        name.toLowerCase() === value.toLowerCase() ||
+        number.toLowerCase() === value.toLowerCase()
+    );
   };
 
   const toastrMessage = (message) => {
@@ -34,7 +32,7 @@ const ContactsFomr = ({ onClose }) => {
     event.preventDefault();
 
     const name = inputName.value;
-    const number = Number(inputNumber.value);
+    const number = inputNumber.value;
 
     if (checkValidatitonOfNewContact(name)) {
       toastrMessage(name);
@@ -75,7 +73,7 @@ const ContactsFomr = ({ onClose }) => {
           autoComplete="off"
           type="tel"
           name="number"
-          placeholder="+380677777777"
+          placeholder="+3(073) 777 77 77"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="The phone number must be digits and can contain spaces, dashes, parentheses and can start with + "
           required
