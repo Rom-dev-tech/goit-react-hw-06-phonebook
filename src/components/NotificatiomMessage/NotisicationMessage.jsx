@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './NotisicationMessage.scss';
+import 'components/NotificatiomMessage/NotisicationMessage.scss';
 
 const NotificatiomMessage = ({ message }) => {
   return <h2 className="message">{message}</h2>;

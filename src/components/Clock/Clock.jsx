@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import './Clock.scss';
+import 'components/Clock/Clock.scss';
 
 const Clock = ({ direction, size }) => {
   const [time, setTime] = useState(() => new Date().toLocaleTimeString());

@@ -1,19 +1,18 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import contactsActions from '../../redux/phonebook/contacts-actions';
-import { getContacts } from '../../redux/phonebook/contacts-selectors';
+import { contactsActions, contactsSelectors } from 'redux/phonebook';
 import toastr from 'toastr';
-import toastrOptions from '../../components/Notification';
-import useInput from '../../Hooks/useInput';
-import '../ContactsFomr/ContactsFomr.scss';
+import toastrOptions from 'components/Notification';
+import useInput from 'Hooks/useInput';
+import 'components/ContactsFomr/ContactsFomr.scss';
 
 const ContactsFomr = ({ onClose }) => {
   const inputName = useInput('');
   const inputNumber = useInput('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(contactsSelectors.getContacts);
 
   const checkValidatitonOfNewContact = (value) => {
     return contacts.find(

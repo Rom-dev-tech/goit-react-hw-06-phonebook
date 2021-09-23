@@ -1,5 +1,5 @@
-import PhoneBookView from './views/PhoneBookView';
-import Container from './components/Container';
+import PhoneBookView from 'views/PhoneBookView';
+import Container from 'components/Container';
 
 const App = () => {
   return (

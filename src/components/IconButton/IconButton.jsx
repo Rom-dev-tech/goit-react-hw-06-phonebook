@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './IconButton.scss';
+import 'components/IconButton/IconButton.scss';
 
 const IconButton = ({ children, onClick, ...allyProps }) => (
   <button

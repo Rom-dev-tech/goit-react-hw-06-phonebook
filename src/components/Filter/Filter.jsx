@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import contactsActions from '../../redux/phonebook/contacts-actions';
-import { getFilter } from '../../redux/phonebook/contacts-selectors';
-import '../Filter/Filter.scss';
+import { contactsActions, contactsSelectors } from 'redux/phonebook';
+import 'components/Filter/Filter.scss';
 
 const Filter = () => {
-  const value = useSelector(getFilter);
+  const value = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
 
   const onChange = (event) =>

@@ -7,11 +7,8 @@ export default function useInput(initialValue) {
     setValue(evt.target.value);
   };
 
-  // const clear = () => setValue('');
-
   return {
     bind: { value, onChange },
     value,
-    // clear,
   };
 }

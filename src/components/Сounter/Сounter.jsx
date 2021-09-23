@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getTotalContactsCount } from '../../redux/phonebook/contacts-selectors';
+import { contactsSelectors } from 'redux/phonebook';
 
 const Сounter = ({ title }) => {
-  const totalContactsCount = useSelector(getTotalContactsCount);
+  const totalContactsCount = useSelector(
+    contactsSelectors.getTotalContactsCount
+  );
 
   return (
     <div style={{ fontSize: '2rem' }}>

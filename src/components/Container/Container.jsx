@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './Container.scss';
+import 'components/Container/Container.scss';
 
 const Container = ({ children }) => <div className="container">{children}</div>;
 

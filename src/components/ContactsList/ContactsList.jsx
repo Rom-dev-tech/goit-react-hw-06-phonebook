@@ -1,23 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getVisibleContacts,
-  getTotalContactsCount,
-} from '../../redux/phonebook/contacts-selectors';
-import contactsActions from '../../redux/phonebook/contacts-actions';
-import Title from '../../components/Title';
-import Filter from '../../components/Filter';
-import NotificatiomMessage from '../../components/NotificatiomMessage';
 import { FaUser, FaPhone } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import IconButton from '../IconButton';
-import { ReactComponent as AddIcon } from '../../icons/delete.svg';
-import '../ContactsList/ContactsList.scss';
+import { contactsActions, contactsSelectors } from 'redux/phonebook';
+import Title from 'components/Title';
+import Filter from 'components/Filter';
+import NotificatiomMessage from 'components/NotificatiomMessage';
+import IconButton from 'components/IconButton';
+import { ReactComponent as AddIcon } from 'icons/delete.svg';
+import 'components/ContactsList/ContactsList.scss';
 
 const ContactsList = () => {
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
   const dispatch = useDispatch();
-  const totalContacts = useSelector(getTotalContactsCount);
+  const totalContacts = useSelector(contactsSelectors.getTotalContactsCount);
 
   const onDeleteContact = (id) => dispatch(contactsActions.deleteContacts(id));
 

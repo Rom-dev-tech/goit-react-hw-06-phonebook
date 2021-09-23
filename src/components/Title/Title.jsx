@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../Title/Title.scss';
+import 'components/Title/Title.scss';
 
 const Title = ({ title, type }) => {
   return <h2 className={`title ${type}`}>{title}</h2>;

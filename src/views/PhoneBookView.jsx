@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import ContactsFomr from '../components/ContactsFomr';
-import ContactsList from '../components/ContactsList';
-import Clock from '../components/Clock';
-import MainTitle from '../components/MainTitle';
-import Сounter from '../components/Сounter';
-import Modal from '../components/Modal';
-import IconButton from '../components/IconButton';
-import { ReactComponent as AddIcon } from '../icons/add.svg';
-import FlexWrapper from '../components/FlexWrapper';
+import ContactsFomr from 'components/ContactsFomr';
+import ContactsList from 'components/ContactsList';
+import Clock from 'components/Clock';
+import MainTitle from 'components/MainTitle';
+import Сounter from 'components/Сounter';
+import Modal from 'components/Modal';
+import IconButton from 'components/IconButton';
+import { ReactComponent as AddIcon } from 'icons/add.svg';
+import FlexWrapper from 'components/FlexWrapper';
 
 const PhoneBookView = () => {
   const [showModal, setShowModal] = useState(false);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../FlexWrapper/FlexWrapper.scss';
+import 'components/FlexWrapper/FlexWrapper.scss';
 
 const FlexWrapper = ({ children }) => (
   <div className="flex__wrapper">{children}</div>
