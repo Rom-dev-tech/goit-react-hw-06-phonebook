@@ -1,5 +1,5 @@
-export { default as contactsActions } from './contacts-actions';
+export * as contactsActions from './contactsActions';
 
-export * as contactsSelectors from './contacts-selectors';
+export * as contactsSelectors from './contactsSelectors';
 
-export { default as contactsReducer } from './contacts-reducer';
+export { default as contactsReducer } from './contactsReducer';
