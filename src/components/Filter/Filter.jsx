@@ -13,7 +13,7 @@ const Filter = () => {
   return (
     <div className="filter__wrapper">
       <label className="filter__label">
-        <span className="filter__name">Find contacts by name</span>
+        <span className="filter__name">Find contacts by name or number</span>
         <input
           className="filter__input"
           type="text"
