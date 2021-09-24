@@ -16,6 +16,7 @@ const Filter = () => {
         <span className="filter__name">Find contacts by name or number</span>
         <input
           className="filter__input"
+          placeholder="Enter name or number"
           type="text"
           value={value}
           onChange={onChange}
